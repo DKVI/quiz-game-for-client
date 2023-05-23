@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+/** @format */
 
+import "./App.css";
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Container, Dashboard, Login, Test } from "./component";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_QUESTIONS } from "./redux/actions";
 function App() {
+  const dispatch = useDispatch();
+  const questions = useSelector((state) => state.questions);
+  useEffect(() => {
+    dispatch(GET_QUESTIONS());
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("questions", JSON.stringify(questions));
+  }, [questions]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-screen h-screen bg-night bg-cover bg-center">
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/main" element={<Container />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
