@@ -1,13 +1,51 @@
 /** @format */
 
 import React from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { INCREASE_SCORES, Z_INDEX_ITEMS } from "../redux/actions";
 const Dashboard = () => {
-    return (
-    <div className="w-screen h-screen flex">
-      <div className="w-[80%] h-[60%] bg-white m-auto rounded-xl p-3">
-        <div>
-            CONGRATULATION! {}
+  const scores = useSelector((state) => state.scores);
+  const name = useSelector((state) => state.name);
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(INCREASE_SCORES(0));
+    dispatch(Z_INDEX_ITEMS(1));
+  };
+  return (
+    <div className="w-screen h-screen flex relative">
+      <div className="w-[80%] h-[50%] bg-white m-auto rounded-xl p-3 flex flex-col justify-between">
+        <div className="text-center text-[30px] text-purple-500">
+          GOOB JOB, {name}! 🥳
+        </div>
+        <div className="flex">
+          <div className="score w-[100px] h-[100px] border-purple-600 border-[5px] rounded-[50%] flex m-auto">
+            <div className="m-auto text-[18px] ">{scores}/20</div>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-1/2 text-center text-red-500 font-bold">
+            <span></span>Wrong: {20 - scores}
+          </div>
+          <div className="w-1/2 text-center text-green-600 font-bold">
+            True: {scores}
+          </div>
+        </div>
+        <div className="flex">
+          <Link
+            onClick={handleClick}
+            to={"/main"}
+            className="w-1/2 bg-purple-600 p-[10px] rounded-lg text-white text-center"
+          >
+            Again
+          </Link>
+          <Link
+            onClick={handleClick}
+            to={"/"}
+            className="w-1/2 bg-purple-600 p-[10px] rounded-lg text-white text-center"
+          >
+            Reset
+          </Link>
         </div>
       </div>
     </div>

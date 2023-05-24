@@ -75,7 +75,7 @@ const Test = () => {
                 );
               })
             : null}
-          <Result />
+          {document.querySelector(".questions") ? null : <Result />}
         </div>
       </div>
     </div>

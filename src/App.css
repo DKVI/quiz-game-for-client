@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+
+} 
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App-logo {

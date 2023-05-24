@@ -77,8 +77,8 @@ const Items = ({ question, index, z, show }) => {
         display: show === index ? "flex" : "none",
       }}
     >
-      <div className="w-full h-[40%] flex-none border rounded-lg shadow-2xl p-[20px] relative flex justify-end  flex-col">
-        <div className="w-full text-[16px]">
+      <div className="w-full h-[40%] flex-none border rounded-lg shadow-2xl p-[20px] relative flex flex-col">
+        <div className="w-full text-[16px] mt-[50px]">
           {" "}
           {"Câu " + index + ": "} {question.name}
         </div>
@@ -92,6 +92,8 @@ const Items = ({ question, index, z, show }) => {
             style={{
               fontSize: "12px",
               backgroundColor: "white",
+              borderRadius: "12px",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
             onClick={(e) => handleClick(e, item.id)}
           >

@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Result = () => {
   return (
@@ -11,9 +12,12 @@ const Result = () => {
         </div>
         <div className="mb-[12px]">Submit and see your scores</div>
         <div className="w-full flex ">
-          <button className=" m-auto border w-[60%] text-white bg-purple-700 px-[20px] py-[10px] flex rounded-xl ">
+          <Link
+            to="/dashboard"
+            className=" m-auto border w-[60%] text-white bg-purple-700 px-[20px] py-[10px] flex rounded-xl "
+          >
             <p className="text-[16px] m-auto">Submit</p>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

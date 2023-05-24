@@ -7,9 +7,6 @@ const getQuestions = () =>
       const response = await axios({
         url: "/questions",
         method: "get",
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
       resolve(response);
     } catch (error) {

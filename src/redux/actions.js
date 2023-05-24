@@ -8,21 +8,23 @@ export const ADD_USER = (payload) => ({
 export const GET_QUESTIONS = () => async (dispatch) => {
   try {
     const response = await apis.getQuestions();
-    if (response?.status === 200) {
+    console.log(response);
+    if (response?.status === 201) {
+      console.log(true);
       dispatch({
         type: "GET_QUESTIONS",
-        payload: response?.data,
+        payload: response?.data.question,
       });
     } else {
       dispatch({
         type: "GET_QUESTIONS",
-        payload: null,
+        payload: [],
       });
     }
   } catch (error) {
     dispatch({
       type: "GET_QUESTIONS",
-      payload: null,
+      payload: ["error"],
     });
   }
 };

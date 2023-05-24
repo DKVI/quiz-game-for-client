@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/api/v1",
+  baseURL: "https://quiz-game-production-df80.up.railway.app/api/v1",
 });
 // Add a request interceptor
 axios.interceptors.request.use(
