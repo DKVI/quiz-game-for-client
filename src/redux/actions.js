@@ -8,9 +8,7 @@ export const ADD_USER = (payload) => ({
 export const GET_QUESTIONS = () => async (dispatch) => {
   try {
     const response = await apis.getQuestions();
-    console.log(response);
     if (response?.status === 201) {
-      console.log(true);
       dispatch({
         type: "GET_QUESTIONS",
         payload: response?.data.question,

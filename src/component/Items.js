@@ -1,8 +1,9 @@
 /** @format */
 
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { INCREASE_SCORES, Z_INDEX_ITEMS } from "../redux/actions";
+import { motion } from "framer-motion";
 const correct = "w-full h-[120px] border-green-400 border-[5px]";
 const wrong = "w-full h-[120px] border-red-400 border-[5px]";
 const normal = "w-full h-[120px] border-purple-400 border-[5px]";
@@ -27,8 +28,6 @@ const Items = ({ question, index, z, show }) => {
   const handleClick = (e, id) => {
     const item = document.querySelector(".items");
     const answers = document.querySelectorAll(".answers");
-    console.log(answers);
-    console.log(e.target);
     e.target.className = "";
     if (correct === id) {
       dispatch(INCREASE_SCORES(scores + 1));
@@ -78,14 +77,20 @@ const Items = ({ question, index, z, show }) => {
       }}
     >
       <div className="w-full h-[40%] flex-none border rounded-lg shadow-2xl p-[20px] relative flex flex-col">
-        <div className="w-full text-[16px] mt-[50px]">
+        <motion.div
+          className="w-full text-[16px] mt-[50px]"
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -100 }}
+        >
           {" "}
           {"Câu " + index + ": "} {question.name}
-        </div>
+        </motion.div>
       </div>
       <div className="w-full h-[60%] flex flex-col gap-[20px] mt-5">
         {question.answers.map((item, index) => (
-          <div
+          <motion.div
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+            initial={{ opacity: 0, y: 100 }}
             key={item.id}
             id={item.id}
             className="w-full h-[120px] border-purple-400 border-[5px] answers p-[10px]"
@@ -98,7 +103,7 @@ const Items = ({ question, index, z, show }) => {
             onClick={(e) => handleClick(e, item.id)}
           >
             {item.content}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
