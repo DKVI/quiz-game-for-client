@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ADD_RANDOM } from "../redux/actions";
 import Result from "./Result";
 import { motion } from "framer-motion";
+import { INCREASE_SCORES } from "../redux/actions";
 const Test = () => {
   const [time, setTime] = useState(15 * 60);
   const [minutes, setMinutes] = useState(15);
@@ -14,6 +15,9 @@ const Test = () => {
   const showItem = useSelector((state) => state.itemId);
   const questions = useSelector((state) => state.questionsList);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(INCREASE_SCORES(0));
+  }, []);
   useEffect(() => {
     const random = [];
     for (let i = 0; i < 20; i++) {

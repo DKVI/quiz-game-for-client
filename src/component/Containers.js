@@ -21,11 +21,7 @@ const Container = () => {
           Welcome {name}!
         </h1>
         <div className="">
-          <motion.h1
-            animate={{ color: ["#000", "#fff", "#000"], Infinity }}
-            infinite
-            className="text-[20px] text-center"
-          >
+          <motion.h1 className="text-[20px] text-center">
             Hệ quản trị và an toàn cơ sở dữ liệu
           </motion.h1>
           <div className="w-full justify-between flex px-[30px] mt-[10px]">

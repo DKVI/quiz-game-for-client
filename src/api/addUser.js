@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "../axios";
-const addUser = (name) =>
+const addUser = (formData) =>
   new Promise(async (resolve, reject) => {
     try {
       const response = await axios({
@@ -11,8 +11,7 @@ const addUser = (name) =>
           "Content-Type": "application/json",
         },
         data: {
-          name,
-          scores: 0,
+          ...formData,
         },
       });
       resolve(response);
