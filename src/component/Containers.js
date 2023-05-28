@@ -21,11 +21,21 @@ const Container = () => {
           Welcome {name}!
         </h1>
         <div className="">
-          <h1 className="text-left text-[18px]">
+          <motion.h1
+            animate={{ color: ["#000", "#fff", "#000"], Infinity }}
+            infinite
+            className="text-[20px] text-center"
+          >
             Hệ quản trị và an toàn cơ sở dữ liệu
-          </h1>
-          <h1>20 questions</h1>
-          <p>15 minutes</p>
+          </motion.h1>
+          <div className="w-full justify-between flex px-[30px] mt-[10px]">
+            <div className="w-[80px] h-[80px] border-[4px] border-green-400 flex">
+              <p className="m-auto text-green-400 font-bold">20 câu</p>
+            </div>
+            <div className="w-[80px] h-[80px] border-[4px] border-red-400 flex">
+              <p className="m-auto text-red-400 font-bold">15 phút</p>
+            </div>
+          </div>
         </div>
         <Link
           to={"/test"}
